@@ -1,0 +1,26 @@
+.card {
+    display: flex;
+    background-color: black;
+    margin: 25px auto;
+    padding: 25px 20px;
+    width: 50%;
+    height: 300px;
+    color: white;
+
+
+}
+
+.card_url {
+    margin: 5px 30px;
+    width: 200px;
+    height: 300px;
+    border-radius: 5%;
+}
+
+.card_destalles {
+    font-size: 15px;
+    width: 550px;
+    height: 80px;
+    padding-bottom: 100px;
+    margin-bottom: 25px;
+}

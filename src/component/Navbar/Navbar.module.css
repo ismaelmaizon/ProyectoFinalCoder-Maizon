@@ -1,0 +1,109 @@
+.container {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 10px;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    flex: 1;
+    color: #000;
+    font-size: 20px;
+    font-family: 'Anton', sans-serif;
+}
+
+.title_1{
+    text-decoration: none;
+    color: #000;
+}
+
+.find {
+    margin: 0.5px;
+    padding: 5px;
+}
+
+
+/*Menu navegacion*/
+
+
+.right{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu_list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    list-style: none;
+    font-size: 25px;
+}
+
+.menu_list li:hover {
+    color: #0E5341;
+    cursor: pointer;
+}
+
+/*lista deplegable*/
+.menu_productos{
+    list-style: none;
+    position: absolute;
+    height: 10px;
+    --clip: polygon(0 0, 100% 0, 100% 0, 0 0);    
+} 
+
+.menu_productos:hover{
+    --clip: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.menu_nestig{
+    list-style: none;
+    position: relative;
+    clip-path: var(--clip);
+    transform: translateX(-30px);
+}
+
+.menu_dentro{
+    padding: 10px;
+    font-size: 15px;
+    color: antiquewhite;
+
+}
+.menu_dentro:hover {
+    background-color: #FC9802;
+}
+
+
+/*buscar*/
+
+
+.find{
+    width: 100px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #0E5341;
+    color: #ebfc02;
+}
+
+.carrito{
+    font-size: 30px;
+}
+
+.links{
+    text-decoration: none;
+    color: antiquewhite;
+}
+
