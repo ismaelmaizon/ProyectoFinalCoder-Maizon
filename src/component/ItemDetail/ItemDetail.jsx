@@ -36,11 +36,10 @@ const ItemDetail = () => {
 
     // añadiendo al carrito
 
-    const {addProduct} = useCartContext()
+    const {carrito} = useContext(CartContext)
+    const {setCarrito} = useContext(CartContext)
 
-    const onAdd = (quantity) =>{
-        addProduct(productos, quantity)
-    }
+    console.log("carro: ", carrito);
 
     
 
@@ -56,7 +55,9 @@ const ItemDetail = () => {
                     <h2>cantidad en stock: {producto.stok}</h2>
                 </div>
                 <div className= {style.btns} >
-                    <button onClick={onAdd(contador)} >Añadir a carrito</button>
+                    <button 
+                    onClick={() => setCarrito(producto)}
+                    >Añadir a carrito</button>
                     <button onClick={handeldClick} >+</button><button onClick={handeldClick2} >-</button>
                     <h3>unidades deceadas: {contador} </h3>
                 </div>

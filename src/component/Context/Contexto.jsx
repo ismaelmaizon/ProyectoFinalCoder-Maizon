@@ -59,15 +59,13 @@ const CartProvider = ({children}) => {
     // }
 
     /*2*/
-    // const addProduct = (item, quantity) => {
-    //     if (siExiste(item.id)) {
-    //         setCarrito( carrito.map(prod => {
-    //             return prod.id === item.id ? {...prod, quantity: prod.quantity + quantity} : prod
-    //         }));
-    //     }else {
-    //         setCarrito([...carrito,  {...item, quantity}])
-    //     }
-    // }
+    const addProduct = (id) => {
+        if (siExiste(id)) {
+            setCarrito( productos.map(prod => {
+                return prod.id === id ?  carrito.push(prod) : console.log("no se encontro producto con ese ID")
+         }));
+     }
+    }
 
     console.log('carrito', carrito)
 
@@ -84,8 +82,9 @@ const CartProvider = ({children}) => {
 
     return (
         <CartContext.Provider value={{
-            productos, 
-            // addProduct, 
+            productos,
+            carrito, setCarrito,
+            addProduct, 
             siExiste, 
             removeCarrito, 
             limpiarCarrito}}>
