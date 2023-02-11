@@ -23,26 +23,32 @@ const ItemDetail = () => {
 
     console.log(producto);
 
-    //contador
-    const [contador, setContador] = useState(0)
+    //unidades
+    const {unidades} = useContext(CartContext);
+    const {setUnidades} = useContext(CartContext);
+
+    console.log(unidades)
 
     const handeldClick = ()  =>{
-        setContador(contador + 1)
+        setUnidades(unidades + 1)
     }
 
     const handeldClick2 = ()  =>{
-        (contador === 0 ) ? setContador(0) : setContador( contador - 1 )
+        (unidades === 0 ) ? setUnidades(0) : setUnidades( unidades - 1 )
     }
 
     // añadiendo al carrito
 
     const {carrito} = useContext(CartContext)
     const {setCarrito} = useContext(CartContext)
+    const {addProduct} = useContext(CartContext)
+    const {alerta} = useContext(CartContext)
 
-    console.log("carro: ", carrito);
+    const añadiendoACarrito =() => {
+        setCarrito(addProduct(producto, carrito, unidades))
+        alerta();
 
-    
-
+    }
 
 
     return(
@@ -55,11 +61,12 @@ const ItemDetail = () => {
                     <h2>cantidad en stock: {producto.stok}</h2>
                 </div>
                 <div className= {style.btns} >
+                    {/* <button onClick={alerta} >agregar</button> */}
                     <button 
-                    onClick={() => setCarrito(producto)}
+                    onClick={añadiendoACarrito}
                     >Añadir a carrito</button>
                     <button onClick={handeldClick} >+</button><button onClick={handeldClick2} >-</button>
-                    <h3>unidades deceadas: {contador} </h3>
+                    <h3>unidades deceadas: {unidades} </h3>
                 </div>
             </div>
         </div>

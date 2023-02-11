@@ -1,21 +1,30 @@
-import React from 'react';
+import React, {useContext } from 'react';
 import style from '../Navbar/Navbar.module.css';
 import { BsFillCartPlusFill } from 'react-icons/bs';
 import { BiDrink } from 'react-icons/bi';
 import { Link, NavLink } from 'react-router-dom';
 import styles from '../Navbar/app.module.css';
 import { useState } from 'react';
+import { CartContext } from '../Context/Contexto';
 
 const Navbar = () => {
 
   const [input, setInput] = useState("")
-  const [contadorCarrito, serContadorCarrito] = useState(0)
+
+
+  //contexto
+
+  const {totalProd} = useContext(CartContext)
+  const {setTotalProd} = useContext(CartContext)
+
+
+  
 
   return (
     <div className={style.container}>
       {/* logo */}
       <div className={style.title}>
-        <Link className={style.title_1} to="/">
+        <Link className={style.title_1} to="/" >
           <h1><BiDrink/> AberturasBodereau</h1>
         </Link>
         
@@ -57,7 +66,9 @@ const Navbar = () => {
         value={input} />
         <button className={style.btn_shared} >buscar</button>
         <div className={style.carrito} >
-          <BsFillCartPlusFill/>{contadorCarrito}
+        <Link to='/carrito' >
+          <BsFillCartPlusFill/>{totalProd}
+        </Link>
         </div>
         <h2> {input} </h2>
       </div>

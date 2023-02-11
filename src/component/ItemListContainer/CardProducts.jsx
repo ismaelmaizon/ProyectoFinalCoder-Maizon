@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../Context/Contexto';
@@ -10,8 +11,26 @@ const CardProducts = () => {
     //contexto
 
     const {productos} = useContext(CartContext)
+    const {ordenes} = useContext(CartContext)
+
 
     console.log( productos)
+    console.log (ordenes)
+
+
+    const ord = () => {
+        console.log (ordenes.map(({sillas, puff, alfombras, id}) => {
+            console.log("id de orden: " + id)
+            console.log(" sillas :" + sillas.name);
+            console.log(" puff :" + puff.name)
+            console.log(" alfombras :" + alfombras.name)
+    
+        }))
+    }
+
+    useEffect(()=> {
+        ord()
+    }, [])
 
 
     return (
@@ -19,6 +38,9 @@ const CardProducts = () => {
             <div>
                 <Link to='/Productos/crear' >
                     <button>crear</button>
+                </Link>
+                <Link to='/carrito' >
+                    <button>Ver carrito</button>
                 </Link>
             </div>
             <div className={style.card} >{

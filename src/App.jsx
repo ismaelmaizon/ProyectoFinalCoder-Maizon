@@ -1,6 +1,6 @@
 import './App.css'
 import Navbar from './component/Navbar/Navbar'
-import { Link, Navigate, Route, Routes} from 'react-router-dom'
+import {Navigate, Route, Routes} from 'react-router-dom'
 import CardProducts from './component/ItemListContainer/CardProducts'
 import ListSillas from './component/ItemList/ListSillas'
 import ListAlfombras from './component/ItemList/ListAlfombras'
@@ -9,6 +9,7 @@ import ItemDetail from './component/ItemDetail/ItemDetail'
 import Create from './component/Create/Create';
 import { createContext } from 'react';
 import CartProvider from './component/Context/Contexto'
+import Carrito from './component/Carrito/Carrito'
 
 
 // Contexto
@@ -38,6 +39,7 @@ function App() {
             <Route path="/Contactos"  element={<p>hola</p>} />
             <Route path='*' element={<Navigate to="/"/>}/>
             <Route path='/Productos/crear' element={<Create/>} />
+            <Route path='/carrito' element={<Carrito/>} />
           </Routes>
         </div>
       </CartProvider>
