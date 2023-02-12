@@ -18,19 +18,19 @@ const CardProducts = () => {
     console.log (ordenes)
 
 
-    const ord = () => {
-        console.log (ordenes.map(({sillas, puff, alfombras, id}) => {
-            console.log("id de orden: " + id)
-            console.log(" sillas :" + sillas.name);
-            console.log(" puff :" + puff.name)
-            console.log(" alfombras :" + alfombras.name)
+    // const ord = () => {
+    //     ordenes.map(({sillas, puff, alfombras, id}) => {
+    //         console.log("id de orden: " + id)
+    //         console.log(" sillas :" + sillas.nombre);
+    //         console.log(" puff :" + puff.nombre)
+    //         console.log(" alfombras :" + alfombras.nombre)
     
-        }))
-    }
+    //     })
+    // }
 
-    useEffect(()=> {
-        ord()
-    }, [])
+    // useEffect(()=> {
+    //     ord()
+    // }, [])
 
 
     return (

@@ -8,21 +8,20 @@ import style from './Carrito.module.css';
 
 const Carrito = () => {
 
-    //precio total
-    const [total, setTotal] = useState(0)
-
-    const contador = () => {
-        carrito.map((prod) => {setTotal(total + prod.precio)} ) 
-    }
-
-    useEffect(()=> {
-        contador();
-    }, [])
 
     // carrit
     const {carrito} = useContext(CartContext)
+    const {total} = useContext(CartContext)
+    const {contador} = useContext(CartContext)
+    const {handelClickCompra} = useContext(CartContext)
+
+
 
     console.log(carrito);
+
+    useEffect(() => {
+        contador()
+    }, [])
 
 
   return (
@@ -51,7 +50,7 @@ const Carrito = () => {
             </div>
             <div className={style.btns} >
                 <button className={style.btn}>Cancelar compra</button>
-                <button className={style.btn}>Comprar</button>
+                <button className={style.btn} onClick={handelClickCompra}  >Comprar</button>
             </div>
         </div>
     </div>

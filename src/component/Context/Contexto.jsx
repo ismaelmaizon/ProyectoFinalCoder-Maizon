@@ -1,7 +1,7 @@
 
 //base de datos
 import { db } from '../../../db/firebase-config';
-import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, deleteDoc, doc, addDoc } from 'firebase/firestore';
 
 // Sweetalert2
 import Swal from 'sweetalert2'
@@ -15,6 +15,11 @@ export const CartContext = createContext([])
 // creando mi propio hoock
  
 export const useCartContext = () => useContext(CartContext)
+
+
+// react router
+
+import { useNavigate } from 'react-router-dom';
 
 
 const CartProvider = ({children}) => {
@@ -31,8 +36,6 @@ const CartProvider = ({children}) => {
     // obtener ordenes firebase
     const [ordenes, setOrdenes] = useState({})
     const ordenesCollection = collection(db, "ordenes" )
-
-
     const getOrdenes = async () => {
         const dataOrden = await getDocs(ordenesCollection);
         console.log(dataOrden);
@@ -68,10 +71,6 @@ const CartProvider = ({children}) => {
         })
     };
 
-    useEffect(() => {
-        getProductos();
-        getOrdenes();
-    }, []);
 
     console.log("productos:" + {productos})
     console.log("ordenes:" + {ordenes})
@@ -111,11 +110,42 @@ const CartProvider = ({children}) => {
     const limpiarCarrito = () => setCarrito([]);
 
 
+    /// agregando ordenes ////////
+
+    //precio total
+    const [total, setTotal] = useState(0)
+
+    const contador = () => {
+        carrito.map((prod) => {setTotal(total + prod.precio)} ) 
+    }
+
+    const order = {
+        comprador: {
+            nombre: "Ismael", 
+            email: "ismael@gmail.com",
+            telefono: "123456",
+            direccion: "recta martinolli"
+        }, 
+        items: carrito.map(product => ({ id: product.id, name: product.name, unidades: product.unidades, precio: product.precio})),
+        total: total
+    }
+
+    const handelClickCompra = () => {
+        const orderCollection = collection( db, "ordenes" );
+        addDoc(orderCollection, order)
+        .then(({id})=> console.log(id));
+    }
     
+
+    useEffect(() => {
+        getProductos();
+    }, []);
 
 
     return (
         <CartContext.Provider value={{
+            handelClickCompra,
+            total,contador,
             productos,ordenes,
             alerta,
             totalProd, setTotalProd,
