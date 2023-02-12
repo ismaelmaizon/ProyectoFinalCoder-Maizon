@@ -38,7 +38,7 @@ const Carrito = () => {
                             <div className={style.prod} >
                                 <div>{prod.name}</div>
                                 <div>{prod.unidades}</div>
-                                <div>{prod.precio}</div>
+                                <div>{prod.precio*prod.unidades}</div>
                             </div>
                         )
                     })}

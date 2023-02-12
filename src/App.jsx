@@ -35,8 +35,8 @@ function App() {
             <Route path="/Productos/puff"  element={<ListPuff/>} /> 
             <Route path="/Productos/alfombras"  element={<ListAlfombras/>} /> 
             <Route path="/Productos/detalles/:idparams"  element={<ItemDetail/>} />
-            <Route path="/Nosotros"  element={<p>N</p>} />
-            <Route path="/Contactos"  element={<p>hola</p>} />
+            <Route path="/Nosotros"  element={<p>sin info...</p>} />
+            <Route path="/Contactos"  element={<p>sin info...</p>} />
             <Route path='*' element={<Navigate to="/"/>}/>
             <Route path='/Checkout' element={<Checkout/>} />
             <Route path='/carrito' element={<Carrito/>} />

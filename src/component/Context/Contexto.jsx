@@ -1,7 +1,7 @@
 
 //base de datos
 import { db } from '../../../db/firebase-config';
-import { collection, getDocs, deleteDoc, doc, addDoc } from 'firebase/firestore';
+import { collection, getDocs, deleteDoc, doc} from 'firebase/firestore';
 
 // Sweetalert2
 import Swal from 'sweetalert2'
@@ -71,6 +71,9 @@ const CartProvider = ({children}) => {
         })
     };
 
+    
+    
+
 
     console.log("productos:" + {productos})
     console.log("ordenes:" + {ordenes})
@@ -114,45 +117,22 @@ const CartProvider = ({children}) => {
 
     //precio total
     const [total, setTotal] = useState(0)
-    const [nombre, setNombre] = useState("")
-    const [email, setEmail] = useState("")
-    const [telefono, setTelefono] = useState("")
-    const [direccion, setDireccion] = useState("")
-
-
+   
 
     const contador = () => {
-        carrito.map((prod) => {setTotal(total + prod.precio)} ) 
+        carrito.map((prod) => {setTotal(total + (prod.precio*prod.unidades))} ) 
     }
 
-    const order = {
-        comprador: {
-            nombre: {nombre}, 
-            email: {email},
-            telefono: {telefono},
-            direccion: {direccion}
-        }, 
-        items: carrito.map(product => ({ id: product.id, name: product.name, unidades: product.unidades, precio: product.precio})),
-        total: total
-    }
-
-    const handelClickComprar = () => {
-        const orderCollection = collection( db, "ordenes" );
-        addDoc(orderCollection, order)
-        .then(({id})=> console.log(id));
-    }
     
-
     useEffect(() => {
         getProductos();
+        getOrdenes();
     }, []);
 
 
     return (
         <CartContext.Provider value={{
-            handelClickComprar,
-            nombre, setNombre, email, setEmail, telefono, setTelefono, direccion, setDireccion,
-            total,contador,
+            total,contador, setTotal,
             productos,ordenes,
             alerta,
             totalProd, setTotalProd,

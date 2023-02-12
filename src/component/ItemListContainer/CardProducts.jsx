@@ -11,34 +11,17 @@ const CardProducts = () => {
     //contexto
 
     const {productos} = useContext(CartContext)
-    const {ordenes} = useContext(CartContext)
+    // const {ordenes} = useContext(CartContext)
 
 
     console.log( productos)
-    console.log (ordenes)
+    // console.log (ordenes)
 
-
-    // const ord = () => {
-    //     ordenes.map(({sillas, puff, alfombras, id}) => {
-    //         console.log("id de orden: " + id)
-    //         console.log(" sillas :" + sillas.nombre);
-    //         console.log(" puff :" + puff.nombre)
-    //         console.log(" alfombras :" + alfombras.nombre)
-    
-    //     })
-    // }
-
-    // useEffect(()=> {
-    //     ord()
-    // }, [])
 
 
     return (
         <div>
             <div>
-                <Link to='/Productos/crear' >
-                    <button>crear</button>
-                </Link>
                 <Link to='/carrito' >
                     <button>Ver carrito</button>
                 </Link>
