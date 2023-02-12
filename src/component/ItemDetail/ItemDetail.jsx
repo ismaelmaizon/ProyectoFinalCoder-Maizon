@@ -34,7 +34,7 @@ const ItemDetail = () => {
     }
 
     const handeldClick2 = ()  =>{
-        (unidades === 0 ) ? setUnidades(0) : setUnidades( unidades - 1 )
+        (unidades === 1 ) ? setUnidades(1) : setUnidades( unidades - 1 )
     }
 
     // añadiendo al carrito

@@ -1,7 +1,7 @@
 import React from 'react'
-import { useState } from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { CartContext } from '../Context/Contexto';
 import style from './Carrito.module.css';
 
@@ -13,7 +13,6 @@ const Carrito = () => {
     const {carrito} = useContext(CartContext)
     const {total} = useContext(CartContext)
     const {contador} = useContext(CartContext)
-    const {handelClickCompra} = useContext(CartContext)
 
 
 
@@ -50,7 +49,9 @@ const Carrito = () => {
             </div>
             <div className={style.btns} >
                 <button className={style.btn}>Cancelar compra</button>
-                <button className={style.btn} onClick={handelClickCompra}  >Comprar</button>
+                <Link to="/Checkout">
+                    <button className={style.btn}>Confirmar Compra</button>
+                </Link>
             </div>
         </div>
     </div>

@@ -6,10 +6,10 @@ import ListSillas from './component/ItemList/ListSillas'
 import ListAlfombras from './component/ItemList/ListAlfombras'
 import ListPuff from './component/ItemList/ListPuff'
 import ItemDetail from './component/ItemDetail/ItemDetail'
-import Create from './component/Create/Create';
 import { createContext } from 'react';
 import CartProvider from './component/Context/Contexto'
 import Carrito from './component/Carrito/Carrito'
+import Checkout from './component/Checkout/Checkout'
 
 
 // Contexto
@@ -38,7 +38,7 @@ function App() {
             <Route path="/Nosotros"  element={<p>N</p>} />
             <Route path="/Contactos"  element={<p>hola</p>} />
             <Route path='*' element={<Navigate to="/"/>}/>
-            <Route path='/Productos/crear' element={<Create/>} />
+            <Route path='/Checkout' element={<Checkout/>} />
             <Route path='/carrito' element={<Carrito/>} />
           </Routes>
         </div>

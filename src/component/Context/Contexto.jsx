@@ -79,7 +79,7 @@ const CartProvider = ({children}) => {
     /////////// logica para carrito //////////////////////////
 
     const [carrito, setCarrito] = useState([]);
-    const [unidades, setUnidades] = useState(0);
+    const [unidades, setUnidades] = useState(1);
 
     //////contando productos dentro de carrito//////////
 
@@ -114,6 +114,12 @@ const CartProvider = ({children}) => {
 
     //precio total
     const [total, setTotal] = useState(0)
+    const [nombre, setNombre] = useState("")
+    const [email, setEmail] = useState("")
+    const [telefono, setTelefono] = useState("")
+    const [direccion, setDireccion] = useState("")
+
+
 
     const contador = () => {
         carrito.map((prod) => {setTotal(total + prod.precio)} ) 
@@ -121,16 +127,16 @@ const CartProvider = ({children}) => {
 
     const order = {
         comprador: {
-            nombre: "Ismael", 
-            email: "ismael@gmail.com",
-            telefono: "123456",
-            direccion: "recta martinolli"
+            nombre: {nombre}, 
+            email: {email},
+            telefono: {telefono},
+            direccion: {direccion}
         }, 
         items: carrito.map(product => ({ id: product.id, name: product.name, unidades: product.unidades, precio: product.precio})),
         total: total
     }
 
-    const handelClickCompra = () => {
+    const handelClickComprar = () => {
         const orderCollection = collection( db, "ordenes" );
         addDoc(orderCollection, order)
         .then(({id})=> console.log(id));
@@ -144,7 +150,8 @@ const CartProvider = ({children}) => {
 
     return (
         <CartContext.Provider value={{
-            handelClickCompra,
+            handelClickComprar,
+            nombre, setNombre, email, setEmail, telefono, setTelefono, direccion, setDireccion,
             total,contador,
             productos,ordenes,
             alerta,
