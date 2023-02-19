@@ -33,7 +33,6 @@ const ListAlfombras = function () {
                     <img src={el.url} alt="" className={style.imagenesCard} />
                     <p className={style.card1Description}>{el.description}</p>
                     <div className={style.card1Btn}>
-                        <button>eliminar</button>
                         <Link to={`/Productos/detalles/${el.id}`}>
                             <button>detalles</button>
                         </Link>
