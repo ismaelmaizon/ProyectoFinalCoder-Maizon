@@ -9,11 +9,11 @@
 
 
 .carritoTitle {
-    background-color: aquamarine;
-    color: black;
+    color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 30px;
 }
 
 .carritoCantidad{
@@ -23,7 +23,7 @@
 }
 
 .carritoCantidad h3 {
-    padding: 0 40px;
+    padding: 0 70px;
 }
 
 .carritoProductos {
@@ -37,8 +37,7 @@
 }
 
 .carritoTotal {
-    background-color: blueviolet;
-    color: black;
+    color: white;
     display: flex;
     justify-content: space-around;
 }
@@ -46,7 +45,8 @@
 
 .btns {
     display: grid;
-    grid-template-columns: repeat(2, 50%);
+    grid-template-columns: repeat(2, 600px);
+    align-items: center;
 }
 
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CartContext } from '../Context/Contexto';
 import style from './Carrito.module.css';
 
@@ -15,8 +15,26 @@ const Carrito = () => {
     const {contador} = useContext(CartContext)
 
 
+    const {setCarrito} = useContext(CartContext)    
+    const {setTotalProd} = useContext(CartContext)   
+    const {setTotal} = useContext(CartContext)   
+
+
+
+
+    const navigate = useNavigate()
+
+
 
     console.log(carrito);
+
+
+    const cancelarCompra = () => {
+        setCarrito([]);
+        setTotalProd(0);
+        setTotal(0);
+        navigate("/");
+    }
 
     useEffect(() => {
         contador()
@@ -38,7 +56,7 @@ const Carrito = () => {
                             <div className={style.prod} >
                                 <div>{prod.name}</div>
                                 <div>{prod.unidades}</div>
-                                <div>{prod.precio*prod.unidades}</div>
+                                <div>$ {prod.precio*prod.unidades}</div>
                             </div>
                         )
                     })}
@@ -48,7 +66,7 @@ const Carrito = () => {
                 <p>Total</p><p>$ {total}</p>
             </div>
             <div className={style.btns} >
-                <button className={style.btn}>Cancelar compra</button>
+                <button className={style.btn} onClick={cancelarCompra} >Cancelar compra</button>
                 <Link to="/Checkout">
                     <button className={style.btn}>Confirmar Compra</button>
                 </Link>

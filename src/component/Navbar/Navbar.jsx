@@ -25,7 +25,7 @@ const Navbar = () => {
       {/* logo */}
       <div className={style.title}>
         <Link className={style.title_1} to="/" >
-          <h1><BiDrink/> AberturasBodereau</h1>
+          <h1><BiDrink/> DecoBodereau</h1>
         </Link>
         
       </div>

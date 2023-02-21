@@ -56,9 +56,10 @@ const ItemDetail = () => {
             <img src={producto.url} alt="" className={style.card_url}/>
             <div className= {style.card_info} >
                 <div className= {style.card_destalles} >
-                    <h1 className= {style.card_title} > Nombre del producto: {producto.name}</h1>
-                    <p className={style.card_description}> Descripcion: {producto.description}</p>
+                    <h1 className= {style.card_title} >{producto.name}</h1>
+                    <h2>Precio: $ {producto.precio} </h2>
                     <h2>cantidad en stock: {producto.stok}</h2>
+                    <p className={style.card_description}> Descripcion: {producto.description}</p>
                 </div>
                 <div className= {style.btns} >
                     {/* <button onClick={alerta} >agregar</button> */}
